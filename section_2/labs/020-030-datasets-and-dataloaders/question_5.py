@@ -4,15 +4,12 @@ Create a dataloader from our dataset named cd_dataset called cd_dataloader and t
 When creating the dataloader, set the size of the batch to 4.  
 """
 from question_3 import cd_dataset
-# Import dataloader utility here
-from ____.____.____ import ____
+from torch.utils.data import DataLoader
 
-# Create the dataloader called cd_dataloader and set size to 4. 
-____ = ____(dataset=cd_dataset, ____=____, shuffle=True)
+# Create the DataLoader
+cd_dataloader = DataLoader(dataset=cd_dataset, batch_size=4, shuffle=True)
 
-# Iterate through this dataloader like we did above
-features, labels, urls = next(iter(____))
-
-# Print the batch size and the number of labels
-print(f"Features batch shape: {features.____}")
-print(f"Labels batch size shape: {labels.____}")
+# Iterate through a batch
+features, labels, urls = next(iter(cd_dataloader))
+print(features.shape)
+print(labels.shape)

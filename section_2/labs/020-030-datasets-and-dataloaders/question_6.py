@@ -1,11 +1,13 @@
 """
-Create a new dataset called cd_dataset using the folder structure as classes. Use the images directory.
+Create a new dataset called cd_dataset using the directory structure as classes. Use the images directory.
 """
-# Import the module needed
-import ____
+import torchvision
 
-# Ignore this line
+# Transformation for dataset
 transformations = torchvision.transforms.Compose([torchvision.transforms.ToTensor()])
 
-# Create a dataset using the images folder called cd_dataset.
-____ = ____.____._____(____=____, transform=transformations)
+# Create dataset from directory structure
+cd_dataset = torchvision.datasets.ImageFolder(root='images', transform=transformations)
+
+# Print the dataset
+print(cd_dataset)

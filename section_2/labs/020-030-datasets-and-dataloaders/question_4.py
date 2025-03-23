@@ -5,9 +5,5 @@ Please print the values as strings for each attribute.
 """
 from question_3 import cd_dataset
 
-# Annotations attribute
-print(f"Annotations data: \n{____.____}") 
-# Class list attribute
-print(f"Classes: {____.____}")
-
-
+print(f"Annotations data: \n{cd_dataset.df}")
+print(f"Classes: {cd_dataset.class_list}")
