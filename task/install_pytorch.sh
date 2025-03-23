@@ -11,6 +11,10 @@ source venv/bin/activate
 # List installed packages and create requirements.txt
 # pip freeze > requirements.txt
 
+# Let pip auto-resolve the tensor compatibilities (no pinning)
+pip install --index-url https://download.pytorch.org/whl/cpu \
+    torch torchvision torchaudio
+
 # Display the contents of requirements.txt
 cat requirements.txt
 

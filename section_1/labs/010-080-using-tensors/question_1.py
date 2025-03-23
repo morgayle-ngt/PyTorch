@@ -5,6 +5,8 @@ NOTE: Each list should consist of 4 values.
 """
 import torch 
 
-tensor = torch.____(____)
+# Create a 2D tensor using two lists
+tensor = torch.tensor([[1, 2, 3, 4], [5, 6, 7, 8]])
 
-print(tensor.____)
+# Print the size of the tensor
+print(tensor.size())

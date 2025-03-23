@@ -152,9 +152,9 @@ sympy==1.13.3
 terminado==0.18.1
 tinycss2==1.4.0
 tomlkit==0.13.2
-torch==2.3.*  # or 2.3.0+cpu if you need that build
-torchvision
-torchaudio
+# torch==2.3.*  # or 2.3.0+cpu if you need that build
+# torchvision
+# torchaudio
 torchmetrics
 tornado==6.4.2
 tqdm==4.67.1

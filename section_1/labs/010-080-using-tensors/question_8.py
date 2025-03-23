@@ -5,16 +5,17 @@ Using the transforms module from torchvision, create a transformation that conve
 
 Finally create a tensor from the transformation and print the size and device attributes. 
 """
-from PIL import ____
-from torchvision import ____
+from PIL import Image
+from torchvision import transforms
 
 # Load the image into memory
-img = ____.____("/root/PyTorch/images/pytorch-logo.png")
+img = Image.open("/workspaces/PyTorch/images/pytorch-logo.png")
 
 # Create a transformation
-transform = ____.____
+transform = transforms.ToTensor()
 
-# Transform our image into a tensor and print it
-tensor = ____(____)
+# Transform our image into a tensor
+tensor = transform(img)
 
-print(tensor.shape, tensor.____)
+# Print the size and device attributes of the tensor
+print(tensor.size(), tensor.device)
