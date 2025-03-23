@@ -11,35 +11,25 @@ import os
 import pandas as pd
 from PIL import Image
 from torchvision import transforms
-# Import dataset here
-from ____.____.____ import ____
+from torch.utils.data import Dataset
 
-
-# Define our custom Dataset Class
-class ____(____):
-    # Set the methods for Dataset Class
-    def ____(self, annotations_file, class_list):
+class CatDogDataset(Dataset):
+    def __init__(self, annotations_file, class_list):
         script_dir = os.path.dirname(os.path.realpath(__file__))
         annotations_file_path = os.path.join(script_dir, annotations_file)
         self.df = pd.read_csv(annotations_file_path)
         self.class_list = class_list
 
-    def ____(self):
+    def __len__(self):
         return self.df.shape[0]
 
-    def ____(self, index):
+    def __getitem__(self, index):
         image = Image.open(self.df.file_path[index])
         img_url = self.df.file_path[index]
-        # Images must be tensors. Ignore transformations for now.
         convert_tensor = transforms.ToTensor()
         image = convert_tensor(image)
         label = self.class_list.index(self.df.label[index])
-
         return image, label, img_url
 
-
-# Create a custom dataset called cd_dataset
-____ = ____(annotations_file='labels.csv', class_list=['cat', 'dog'])
-
-
-
+# Create the dataset instance
+cd_dataset = CatDogDataset(annotations_file='labels.csv', class_list=['cat', 'dog'])
