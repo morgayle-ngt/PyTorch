@@ -1,26 +1,22 @@
 """
-Build an annotations file to build our initial dataset. 
+Create a CSV file named full_image_data.csv that contains 2 columns: file_path and label.
 
-Using Pandas, create a CSV file named full_image_data.csv that contains 2 columns: file_path and label. 
-
-file_path is the path to the image and label being the label to classify the image. 
-
-The label is in the path of the image.
+The file_path should reference the path to each image, and label should be derived from the directory name.
 """
 import os
 import glob
-# Import Pandas
-import ____ as ____
+import pandas as pd
 
+# Initialize an empty list to collect file path and label data
 data = []
 
-for file_path in glob.glob("data/*/*jpg"):
-    # Extract the class label from the file path
-    label = os.path.basename(os.path.dirname(____))
-    # Append file path and label in a dictionary to data
-    data.append({____: ____, ____: ____})
+# Iterate over all .jpg files located in subdirectories under the "data" directory
+for file_path in glob.glob("data/*/*.jpg"):
+    # Extract the label from the directory name in which the image file is located
+    label = os.path.basename(os.path.dirname(file_path))
+    # Append a dictionary with the file path and corresponding label to the data list
+    data.append({"file_path": file_path, "label": label})
 
-# Create a Dataframe from the data list 
-df = ____.____(data)
-# Save the Dataframe as a CSV file
-df.to_csv(____, index=False)
+# Create a pandas DataFrame and save it to a CSV file
+df = pd.DataFrame(data)
+df.to_csv("full_image_data.csv", index=False)

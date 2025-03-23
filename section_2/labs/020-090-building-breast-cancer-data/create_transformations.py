@@ -17,26 +17,23 @@ normalized mean (0.485, 0.456, 0.406) and standard deviation (0.229, 0.224, 0.22
 
 Use V2 API
 """
+from torchvision.transforms import v2
 import torch
-# Import transforms version 2
-from ____ import ____
 
-# Train Pipeline
-____ = ____.____([
-    ____.____((____, ____)),
-    ____.____(degrees=____),
-    ____.____(p=____),
-    ____.____(), 
-    ____.____(torch.float32, ____),
-    ____.____(mean=[____, ____, ____], 
-              std=[____, ____, ____])
+train_transform = v2.Compose([
+    v2.Resize((128, 128)), # Resize to 128 x 128 pixels
+    v2.Grayscale(num_output_channels=3), # Convert to grayscale but keep 3 channels
+    v2.RandomRotation(30), # Random rotation up to 30 degrees
+    v2.RandomHorizontalFlip(0.5), # Random horizontal flip with 50% probability
+  v2.ToImage(), # Convert to Image tensor
+    v2.ToDtype(torch.float32, scale=True), # Convert to float32 and scale to [0, 1]
+    v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]) # Normalize with mean and std
 ])
 
-# Validation Pipeline. Hint: Copy
-____ = ____.____([
-    ____.____((____, ____)),
-    ____.____(), 
-    ____.____(torch.float32, ____),
-    ____.____(mean=[____, ____, ____], 
-              std=[____, ____, ____])
+val_transform = v2.Compose([
+    v2.Resize((128, 128)), # Resize to 128 x 128 pixels
+    transforms.Grayscale(num_output_channels=3),  # Convert to grayscale but keep 3 channels
+    v2.ToImage(), # Convert to tensor
+    v2.ToDtype(torch.float32, scale=True),  # Convert to float32 and scale to [0, 1]
+    v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]) # Normalize with mean and std
 ])

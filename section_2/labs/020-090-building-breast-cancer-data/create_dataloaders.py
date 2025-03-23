@@ -7,12 +7,13 @@ The train_loader should take in the train_dataset with a batch size of 64 and sh
 
 The val_loader should take the val_dataset with a batch size of 32 and should not shuffle. 
 """
+from torch.utils.data import DataLoader
 from create_datasets import train_dataset, val_dataset
-# Import DataLoader
-from ____ import ____
 
-# Create the training DataLoader
-____ = ____(____, ____=____, shuffle=____)
+# Create DataLoaders
+train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
+val_loader = DataLoader(val_dataset, batch_size=32, shuffle=False)
 
-# Create the Validation DataLoader
-____ = ____(____, batch_size=____, ____=____)
+# Print the DataLoaders
+print("train_loader batch size:", train_loader.batch_size)
+print("val_loader batch size:", val_loader.batch_size)

@@ -10,7 +10,7 @@ import pandas as pd
 ############ Training
 data = []
 # For each index in the training dataset indices
-for idx in ____.____:
+for idx in train_dataset.indices:
     # Extract the file_path and the label from the initial dataset 
     image_path = initial_dataset.image_labels['file_path'].loc[idx]
     label = initial_dataset.image_labels['label'].loc[idx]
@@ -19,12 +19,12 @@ for idx in ____.____:
 
 # Create a Dataframe and save as csv file
 df = pd.DataFrame(data)
-df.to_csv(____, index=False)
+df.to_csv("training_data.csv", index=False)
 
 ############ Validation
 data = []
 # For each index in the validation dataset indices
-for idx in ____.____:
+for idx in val_dataset.indices:
     # Extract the file_path and the label from the initial dataset 
     image_path = initial_dataset.image_labels['file_path'].loc[idx]
     label = initial_dataset.image_labels['label'].loc[idx]
@@ -33,12 +33,12 @@ for idx in ____.____:
 
 # Create a Dataframe and save as csv file
 df = pd.DataFrame(data)
-df.to_csv(____, index=False)
+df.to_csv("validation_data.csv", index=False)
 
 ############# Testing
 data = []
 # For each index in the Testing dataset indices
-for idx in ____.____:
+for idx in test_dataset.indices:
     # Extract the file_path and the label from the initial dataset 
     image_path = initial_dataset.image_labels['file_path'].loc[idx]
     label = initial_dataset.image_labels['label'].loc[idx]
@@ -47,4 +47,4 @@ for idx in ____.____:
 
 # Create a Dataframe and save as csv file
 df = pd.DataFrame(data)
-df.to_csv(____, index=False)
+df.to_csv("testing_data.csv", index=False)
