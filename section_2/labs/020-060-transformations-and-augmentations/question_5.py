@@ -1,16 +1,16 @@
-"""
-With v2, first transform the image into a tensor. Second, randomly crop the image at 50 x 200 pixels. 
-"""
-from ____.____ import v2
+from torchvision.transforms import v2
 from PIL import Image
 
 # Load image into memory
-image = Image.open('images/cat/cat-3.jpg')
+image = Image.open("images/cat/cat-3.jpg")
 
-# Transform the image to a tensor and apply it
-tensor_transform = v2.____
-tensor_image = ____(____)
+# Transform the image to a tensor
+tensor_transform = v2.ToTensor()
+tensor_image = tensor_transform(image)
 
-# Transform the tensor image by random crop and apply it
-random_crop_transform = v2.____(____)
-random_crop_image = ____(____)
+# Transform the tensor image by random crop
+random_crop_transform = v2.RandomCrop((50, 200))
+random_crop_image = random_crop_transform(tensor_image)
+
+# Print the randomly cropped tensor object
+print(random_crop_image)

@@ -1,26 +1,20 @@
-"""
-Normalize the image and then randomly resize it. 
-
-The mean values for the RGB channels should all be 0.5 and the standard deviation should also be set to 0.5. 
-
-The minimum size of the image should be 50 pixels and the maximum size of the image should be 300 pixels. 
-
-Use v2 of the API.
-"""
 from torchvision.transforms import v2
 from PIL import Image
 
 # Load the image to memory
-img = Image.open('images/dog/dog-1.jpg')
+img = Image.open("images/dog/dog-1.jpg")
 
-# Normalize() does not support PIL images.
-tensor_transform = ____.____
-tensor_img = tensor_transform(____)
+# Normalize() does not support PIL images; convert to tensor first
+tensor_transform = v2.ToTensor()
+tensor_img = tensor_transform(img)
 
 # Normalize the image
-normalize_transform = ____.____(____) 
-normalize_img = ____(____)
+normalize_transform = v2.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+normalize_img = normalize_transform(tensor_img)
 
 # Randomly resize the image
-rand_resize_transform = ____.____(____)
-rand_resize_img = ____(____)
+rand_resize_transform = v2.RandomResize(min_size=50, max_size=300)
+rand_resize_img = rand_resize_transform(normalize_img)
+
+# Print the randomly resized tensor object
+print(rand_resize_img)

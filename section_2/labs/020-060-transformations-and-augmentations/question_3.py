@@ -1,16 +1,14 @@
-"""
-Using v1 of the transforms API, resize the following image to 250 pixels by 300 pixels. 
+from torchvision import transforms
+from PIL import Image
 
-Use the pillow library to first load the image.
-"""
-from torchvision import ____
-from ____ import ____
+# Load the image into memory from the specified path
+image = Image.open("images/dog/dog-1.jpg")
 
-# Load the image into memory
-image = ____.____(('images/dog/dog-1.jpg'))
+# Create the resize transform with target dimensions
+resize_transform = transforms.Resize((250, 300))
 
-# Create the resize transform
-resize_transform = ____.____(____)
+# Apply the resize transform to the image
+resized_image = resize_transform(image)
 
-# Apply the transform
-resized_image = ____(____)
+# Print the resized image object to validate
+print(resized_image)
