@@ -1,10 +1,11 @@
 """
-Modify the last layer to output 2 classes
+Modify the `resnet18` model's output layer to classify 2 classes instead of 1000 classes.
 """
+# Import the pre-loaded ResNet18 model
 from load_resnet_model import model
-# Import module
-import ____.____ as nn
 
-# Set classes in output layer to 2
-model.fc = ____.____(512, ____)
+# Import torch.nn to modify the fully connected (fc) layer
+import torch.nn as nn
 
+# Update the fully connected (fc) layer to output 2 classes
+model.fc = nn.Linear(512, 2)  # 512 is the input size for ResNet18's fc layer

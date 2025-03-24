@@ -1,10 +1,8 @@
 """
-Load the resnet18 model with pre-trained weights.
-
-Use the DEFAULT class weights.
+Use the `models.resnet18()` function to load the `resnet18` pre-trained model from torchvision with default weights.
 """
-# import module
-from ____ import ____
+# Import the torchvision models module
+from torchvision import models
 
-# load the resnet18 model from torchvision with default weights
-model = ____.____(weights=____.____.____)
+# Load the ResNet18 model with pre-trained weights
+model = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)

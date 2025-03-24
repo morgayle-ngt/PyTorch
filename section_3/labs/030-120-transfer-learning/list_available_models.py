@@ -1,8 +1,8 @@
 """
-List all the available pre-trained vision models available for torchvision
+List all available pre-trained vision models from torchvision.
 """
-# import module
-from ____ import ____
+# Import the torchvision models module
+from torchvision import models
 
-# print a list available models
-print(____.____)
+# List all available pre-trained models
+print(models.list_models())
